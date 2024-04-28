@@ -1,15 +1,19 @@
-age = int(input("Сколько вам лет: "))
-tickets = int(input("Сколько билетов вы хотите купить?: "))
+total_price = 0
+tickets_count = int(input("Сколько билетов вы хотите купить? "))
 
-if age < 18:
-    price = 0
+for i in range(tickets_count):
+    age = int(input(f"Введите возраст посетителя {i+1}: "))
+    if age < 18:
+        price = 0
+    elif 18 <= age < 25:
+        price = 990
+    else:
+        price = 1390
+    total_price += price
 
+if tickets_count > 3:
+    total_price *= 0.9
 
-if age >= 18 and age <= 25:
-    price = 990
-if age > 25:
-   price = 1390
-if tickets > 3:
-    price = price * 0.9
+total_price = round(total_price) 
 
-print("Итого", int(price), "рублей")
+print(f"Сумма к оплате: {total_price} руб.")
